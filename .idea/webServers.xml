@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="151591c0-9efe-45c6-ba45-0aedbf092716" name="ANVUI" url="http://35.185.169.161">
+        <fileTransfer host="35.185.169.161" port="21120">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21120" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

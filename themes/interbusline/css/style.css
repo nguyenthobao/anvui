@@ -1,0 +1,242 @@
+/* CSS Document */
+ul, ol, li {
+	list-style-type: none;
+}
+.header {
+	margin:45px 0px 35px 90px;
+}
+
+.cus-icon {
+	margin-left: 5px;
+}
+
+.cus-select {
+	color: #747373;
+	margin-left: 5px;
+	border: none;
+	font-size: 20px;
+	-webkit-appearance: none;
+}
+
+.cus-login {
+	margin-left: 5px;
+	font-size: 20px;
+	color: #747373;
+}
+
+.cus-login:hover{
+	text-decoration: none;
+	color: #1278a8;
+}
+
+.phone-img {
+	bottom: 15px;
+}
+
+.timchuyen {
+	background: #1d78a4;
+}
+
+.cus-logo {
+	margin: 55px 0px 30px 100px;
+}
+
+.fa-2 {
+	float: left;
+	font-size: 2em !important;
+	color: #747373;
+}
+
+.chonchuyen {
+	border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none !important;
+	-moz-border-radius: 0px !important; /*Firefox*/
+	-webkit-border-radius: 0px !important;  /*Chrome và Safary*/
+}
+
+.datepicker {
+	border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none !important;
+    padding: 0 30px;
+	-moz-border-radius: 0px !important; /*Firefox*/
+	-webkit-border-radius: 0px !important;  /*Chrome và Safary*/
+}
+
+#TimChuyen {
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #fff;
+    background: #ff690f;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none!important;
+    border-radius: 0 2px 2px 0;
+    height: 35px;
+    padding: 0 30px;
+}
+
+.chuyendoi {
+	margin-left: -25px;
+    margin-right: 10px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.line-title {
+	color: #50618c;
+}
+
+.cus-btn {
+	margin: 10px 10px 0px 0px;
+	padding: 0 .4285714em;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #fff;
+    background: #ff690f;
+    box-shadow: none;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none!important;
+    height: 55px;
+}
+
+.service-name {
+	font-weight: 600;
+    font-size: 16px;
+}
+
+.service-type {
+	font-size: 14px;
+    color: #545454;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+.thongtin {
+	padding-top: 30px;	
+}
+
+.box-chonchuyen {
+	cursor: pointer;
+}
+
+.logo-chuyen {
+	padding: 25px 0 0 20px;
+}
+
+.price-vn {
+	font-weight: 600;
+	font-size: 18px;
+}
+.price-en {
+	font-style: italic;
+}
+
+.cus-btn:hover {
+	background: #1d77a3 !important;
+}
+
+.error_border {
+	color: #FF0000;
+}
+
+.footer-text {
+	font-weight: 500;
+	color: #FFFFFF;
+}
+
+.footer-menu {
+	background: #0d577a;
+}
+
+.cus-footer {
+	padding: 50px 0 50px 0;
+}
+
+.footer-ul {
+	color: #ffff;
+	font-size: 15px;
+}
+
+.footer-ul {
+	padding-bottom: 10px;
+}
+
+.title {
+	color: #FFFFFF;
+}
+
+.title a{
+	color: #FFFFFF;
+}
+
+.list-style {
+	list-style-image: url(../image/sipka_doprava.png) ;
+}
+
+.title a:hover{
+	color: #212121;
+	text-decoration: none;
+}
+
+.email-table {
+	margin-top: 10px;
+	border: 1px solid black;
+	padding: 1px;
+}
+
+#email {
+	padding: 6px;
+    border: none;
+    background: #0d577a;
+}
+
+#submit {
+	border-color: #03151e;
+    background-color: #03151e;
+	width: 70px;
+	-moz-border-radius: 0px !important; /*Firefox*/
+	-webkit-border-radius: 0px !important;  /*Chrome và Safary*/
+	font-weight: bold;
+}
+
+#submit:hover {
+	background: #FFFFFF;
+	color: #000000;
+}
+
+.thumbnail {
+	width: 99% !important;
+}
+
+.selected {
+	background: #1d77a3 !important;
+}

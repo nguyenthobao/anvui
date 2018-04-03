@@ -1,0 +1,162 @@
+<!--{temp admin_head}-->
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Danh sách quảng cáo</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                                <form>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">  
+                                            <select id="pos" name="pos" class="form-control">
+                                                <option value="0">Vị trí</option> 
+                                                {loop $data['pos'] $k $v}
+                                                <option value="{$v['id']}" {if $data['pos_search'] == $v['id']}selected{/if}>{$v['name']}</option>
+                                                {/loop}
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">  
+                                            <select id="status" name="status" class="form-control">
+                                                <option value="0">Trạng thái</option> 
+                                               <option value="1" {if  isset($data['status_search']) && 1 == $data['status_search']}selected{/if}>Đang hiện</option> 
+                                               <option value="2" {if isset($data['status_search']) && 0 == $data['status_search']}selected{/if}>Đang ẩn</option> 
+                                            </select> 
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group"> 
+                                                <input id="title" name="title" value="{$data['title_search']}" class="form-control" placeholder="Tiêu đề"> 
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button type="submit" id="timkiem" class="btn btn-primary">Tìm kiếm</button>
+                                    </div>
+                                </form>
+            </div>
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr> 
+                            <th width="20px">#</th> 
+                            <th>Banner</th> 
+                            <th>Vị trí</th>  
+                            <th>Trạng thái</th> 
+                            <th>Thao tác</th> 
+                        </tr> 
+                    </thead> 
+                    <tbody> 
+                        {loop $data['adv'] $k $v}
+                        <tr id="tr_{$v['id']}"> 
+                            <!--{eval $kk = $data['start'] + $k+1}-->
+                            <th scope="row">$kk</th> 
+                            <td>
+                                <p><b>$v['name']</b></p>
+                                <img style="max-width:200px; max-height: 200px;" src="http://tin12.com/cdn/{$v['img']}"/>
+                            </td> 
+                            <td><small>$v['pos']</small></td>  
+                            <td class="hideshow">
+                                {if $v['status'] == 1}
+                                    Đang hiện  <a href="javascript:an({$v['id']});" class="an_adv" data-id="{$v['id']}">[ẩn]</a>
+                                {else}
+                                    Đang ẩn  <a href="javascript:hien({$v['id']});" class="hien_adv" data-id="{$v['id']}">[hiện]</a>
+                                {/if}
+                            </td> 
+                            <td class="action"> 
+                                <a href="http://tin12.com/admin/advadd?id={$v['id']}" class="" data-id="{$v['id']}">Sửa</a> / 
+                                <a href="javascript:;" class="del_adv" data-id="{$v['id']}">Xoá</a>
+                            </td> 
+                        </tr> 
+                        {/loop}
+                    </tbody>
+                </table>
+
+                <center>
+                    <div class="btn-group hide" role="group" aria-label="First group">
+                        {loop $data['pages'] $k $v}
+                            <a href="http://tin12.com/admin/adv?p={$v}" class="btn btn-default{if isset($data['page']) && $data['page'] == $v } active{/if}"> 
+                                $v
+                            </a> 
+                        {/loop}
+                    </div>
+                </center>
+                <br />
+                <br />
+
+                <script type="text/javascript">
+                    $('.del_adv').click(function(){
+                        var id = $(this).attr('data-id'); 
+                        if (confirm('Bạn chắc chắn muốn xoá quảng cáo này?')) { 
+                            // location.href= 'http://tin12.com/admin/deladv?id='+id;
+                             var ele = '#tr_' + id +' .action';
+                             $(ele).html('Đang thực hiện ...');
+                            $.get('http://tin12.com/admin/deladv?id='+id, function(data, status){
+                                if(data == '1'){
+                                    var e = '#tr_' + id;
+                                    $(e).remove();
+                                }
+                            });
+                        }
+                    });
+                    // $('.an_adv').on('click',function(){
+                    //     var id = $(this).attr('data-id'); 
+                    //     if (confirm('Bạn chắc chắn muốn ẩn quảng cáo này?')) { 
+                    //         // location.href= 'http://tin12.com/admin/deladv?id='+id;
+                    //          var ele = '#tr_' + id +' .hideshow';
+                    //          $(ele).html('Đang thực hiện ...');
+                    //         $.get('http://tin12.com/admin/hideadv?id='+id, function(data, status){
+                    //             if(data == '1'){ 
+                    //                 $(ele).html('Đang ẩn  <a href="javascript:;" class="hien_adv" data-id="'+id+'">[hiện]</a>');
+                    //             }
+                    //         });
+                    //     }
+                    // });
+                    // $('.hien_adv').on('click',function(){
+                    //     var id = $(this).attr('data-id'); 
+                    //     if (confirm('Bạn chắc chắn muốn hiện quảng cáo này?')) { 
+                    //         // location.href= 'http://tin12.com/admin/deladv?id='+id;
+                    //          var ele = '#tr_' + id +' .hideshow';
+                    //          $(ele).html('Đang thực hiện ...');
+                    //         $.get('http://tin12.com/admin/showadv?id='+id, function(data, status){
+                    //             if(data == '1'){
+                    //                 $(ele).html('Đang hiện  <a href="javascript:;" class="an_adv" data-id="'+id+'">[ẩn]</a>');
+                    //             }
+                    //         });
+                    //     }
+                    // });
+                    function an(id){
+                        if (confirm('Bạn chắc chắn muốn ẩn quảng cáo này?')) { 
+                            // location.href= 'http://tin12.com/admin/deladv?id='+id;
+                             var ele = '#tr_' + id +' .hideshow';
+                             $(ele).html('Đang thực hiện ...');
+                            $.get('http://tin12.com/admin/hideadv?id='+id, function(data, status){
+                                if(data == '1'){ 
+                                    $(ele).html('Đang ẩn  <a href="javascript:hien('+id+');" class="hien_adv" data-id="'+id+'">[hiện]</a>');
+                                }
+                            });
+                        }
+                    }
+                    function hien(id){
+                        if (confirm('Bạn chắc chắn muốn hiện quảng cáo này?')) { 
+                            // location.href= 'http://tin12.com/admin/deladv?id='+id;
+                             var ele = '#tr_' + id +' .hideshow';
+                             $(ele).html('Đang thực hiện ...');
+                            $.get('http://tin12.com/admin/showadv?id='+id, function(data, status){
+                                if(data == '1'){
+                                    $(ele).html('Đang hiện  <a href="javascript:an('+id+');" class="an_adv" data-id="'+id+'">[ẩn]</a>');
+                                }
+                            });
+                        }
+                    }
+                </script>
+            </div>
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+<!--{temp admin_footer}-->

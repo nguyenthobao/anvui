@@ -1,0 +1,45 @@
+<div class="content-inner">
+    <h2>Đặt xe từ các thành phố</h2>
+                            <div class="clearfix">
+                                 <!-- Nav tabs -->
+                                <ul class="nav nav-tabs clearfix" role="tablist">
+                                    {loop $data['hottrip'] $k $v}
+                                    <li role="presentation"{if $k ==0} class="active"{/if}><a href="#chuyen{$v['id']}" aria-controls="chuyen{$v['id']}" role="tab" data-toggle="tab">$v['name']</a></li> 
+                                    {/loop}
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    {loop $data['hottrip'] $k $v}
+                                    <div role="tabpanel" class="tab-pane fade{if $k ==0} in active{/if}" id="chuyen{$v['id']}">
+                                        <div class="clearfix">
+                                            <div class="col-md-12 pl0 pr0">
+                                                <ul class="routes-list">
+                                                    {loop $v['trip'] $k1 $v1}
+                                                    <li class="col-md-6 col-xs-12"
+                                                    >
+                                                        <a><span class="route fl"><small>$v['name'] →</small> $v1['name']</span></a>
+                                                        <span class="price fl hide">
+                                                        <!--{eval echo number_format($v1['price'])}-->
+                                                         ₫/vé</span>
+                                                        <div class='input-group date datetimepicker-table' 
+                                                        data-start-name="{$v['name']}" 
+                                                        data-end-name="{$v1['name']}">
+                                                            <input type='hidden' class="form-control chonngay"   />
+                                                            <span class="button input-group-addon">
+                                                                Chọn ngày
+                                                            </span>
+                                                        </div>
+                                                    </li> 
+                                                    {/loop}
+                                                    
+                                                    
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div> 
+                                    {/loop}
+                                </div>
+                            </div>
+                        </div>

@@ -1,0 +1,25 @@
+<div class="content home-box1" style="margin-bottom:20px;margin-top:10px;">
+                <div class="container">
+                     <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bannernews">
+                                <a target="_blank" href="{$data['bannertin']['link']}">
+                                <img src="{$_B['home']}cdn/{$data['bannertin']['avatar']}" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 boxnew">
+                                <h2><a href="/news">Tin tức và sự kiện</a></h2>
+                                 {loop $data['topnews'] $k $v}
+                                 <div class="row list-news">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <a href="$v['link']"><img src="$v['img']" class="img-responsive" /></a>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 infonews">
+                                        <a href="$v['link']">$v['title']</a> 
+                                    </div>
+                                 </div>
+                                 {/loop}
+                            </div>
+                            
+                         </div>
+                </div>
+            </div> 

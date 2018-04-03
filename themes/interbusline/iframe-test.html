@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <title>Đặt vé trực tuyến</title>
+	<base id="TC1OHntfnujP"/>
+	<base target="_blank">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://anvui.vn/themes/interbusline/css/bootstrap.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="libs/bootstrap-select/css/bootstrap-select.min.css">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <![endif]-->
+	<style>
+		body {
+			background-color: initial;
+		}
+
+		#exTab1 {
+			margin-top: 20px;
+		}
+
+		#exTab1 .tab-content {
+			color : white;
+			background-color: #e6e1da;
+			padding : 5px 15px;
+            width: 850px;
+		}
+
+		#exTab1 .nav-pills > li > a {
+			color: #FFFFFF;
+			border-radius: 0;
+		}
+
+		.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus, .nav-pills > li > a:hover {
+			color: #0b647e !important;
+			font-weight: normal !important;
+			background-color: #e6e1da !important;
+		}
+
+		#exTab1 .nav-pills > li {
+			margin-left: 0px;
+			background-color: #0c83a7;
+		}
+
+		.cus-btn {
+			background-color: #FFF;
+			color: #333;
+			margin: 0 10px 10px 0;
+			font-size: 13px;
+			padding: 3px 25px;
+			border-radius: 30px;
+			line-height: 23px;
+			transition: all 0.3s ease-in-out 0s;
+		}
+
+		.cus-btn:hover {
+			background-color: #178fb0;
+			color: #FFFFFF;
+		}
+
+		.btn-active {
+			background-color: #178fb0;
+			color: #FFFFFF;
+		}
+
+		.cus-margin {
+			margin-left: 15px;
+		}
+
+		.chuyendoi {
+			position: absolute;
+            left: 273px;
+			top: 5px;
+            width: 10px;
+            height: 10px;
+            cursor: hand;
+		}
+
+		.TimChuyen {
+			border: solid 2px #dba510;
+			background-color: #FFFFFF;
+			font-weight: 500;
+			color: #dba510;
+		}
+
+		.TimChuyen:hover {
+			background-color: #dba510;
+			color: #FFFFFF;
+		}
+
+        .margin-date {
+            margin-bottom: 10px;
+        }
+
+        @media only screen and (max-width: 2560px) and (min-width: 1200px){
+            .margin-date {
+                margin-left: -50px;
+                width: 80%;
+            }
+        }
+
+        @media only screen and (max-width: 1199px) and (min-width: 320px){
+            .margin-date {
+                margin-left: 0px;
+                width: 100%;
+            }
+
+            .chuyendoi {
+                top: 40px;
+                left: 30px;
+            }
+
+            .cus-field1 {
+                margin-bottom: 35px;
+            }
+
+            .cus-field2 {
+                margin-bottom: 10px;
+            }
+        }
+
+	</style>
+
+</head>
+<body>
+<div id="exTab1" class="container">
+	<ul  class="nav nav-pills">
+		<li class="active"> <a href="#datonline" data-toggle="tab" ><i class="fa fa-calendar-minus-o fa-2"></i> ĐẶT VÉ ONLINE</a></li>
+		<li> <a href="#hanoisapa" data-toggle="tab" ><img src="https://anvui.vn/themes/interbusline/image/hot.gif"> HÀ NỘI - SAPA (InterValentine)</a></li>
+		<li> <a href="#sapahanoi" data-toggle="tab" ><img src="https://anvui.vn/themes/interbusline/image/hot.gif"> SAPA - HÀ NỘI (InterValentine)</a></li>
+	</ul>
+
+	<div class="tab-content clearfix">
+		<!--Dat ve online-->
+		<div class="tab-pane active" id="datonline">
+			<div class="row cus-margin" id="chuyenav">
+
+			</div>
+			<div class="row">
+				<form action="https://booking.interbuslines.com/">
+					<div class="col-lg-8">
+						<div class="col-lg-6 cus-field1">
+							<select class="form-control cus-select" name="startPoint" value="startPoint" id="startPoint"
+									data-live-search="true">
+							</select>
+						</div>
+						<a id="chuyendoi" class="chuyendoi" href="#"><img src="image/Synch.png" style="height: 22px;" alt=""></a>
+						<div class="col-lg-6 cus-field2">
+							<select class="form-control cus-select" name="endPoint" value="endPoint" id="endPoint"
+									data-live-search="true">
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="col-lg-8 margin-date">
+							<div class="has-feedback has-feedback-left">
+								<i class="fa fa-calendar fa-2 form-control-feedback" style="color: #0b0b0b;font-size: 25px;margin-top: 5px;" aria-hidden="true"></i>
+								<input type='text' name="date" value="" class="form-control datepicker"
+									   id="datetimepicker"/>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group has-feedback has-feedback-left">
+								<button type="submit" class="btn TimChuyen">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" id="routeId" name="chuyenav">
+				</form>
+			</div>
+		</div>
+
+		<!--Dat ve hanoi - sapa valentine-->
+		<div class="tab-pane" id="hanoisapa">
+			<div class="row">
+				<form action="https://booking.interbuslines.com/">
+					<div class="col-lg-8">
+						<div class="col-lg-6 cus-field1">
+							<select class="form-control cus-select" name="startPoint" value="startPoint" id="startPointHnSp"
+									data-live-search="true">
+							</select>
+						</div>
+                        <a id="chuyendoi2" class="chuyendoi" href="#"><img src="image/Synch.png" style="height: 22px;" alt=""></a>
+						<div class="col-lg-6 cus-field2">
+							<select class="form-control cus-select" name="endPoint" value="endPoint" id="endPointHnSp"
+									data-live-search="true">
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="col-lg-8 margin-date">
+							<div class="has-feedback has-feedback-left">
+								<i class="fa fa-calendar fa-2 form-control-feedback" style="color: #0b0b0b;font-size: 25px;margin-top: 5px;" aria-hidden="true"></i>
+								<input type='text' name="date" value="" class="form-control datepicker"/>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group has-feedback has-feedback-left">
+								<button type="submit" class="btn TimChuyen">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="chuyenav" value="R02AaUcVpsShK">
+				</form>
+			</div>
+		</div>
+
+		<!--Dat ve SP - HN-->
+		<div class="tab-pane" id="sapahanoi">
+			<div class="row">
+				<form action="https://booking.interbuslines.com/">
+					<div class="col-lg-8">
+						<div class="col-lg-6 cus-field1">
+							<select class="form-control cus-select" name="startPoint" value="startPoint" id="startPointSpHn"
+									data-live-search="true">
+							</select>
+						</div>
+                        <a id="chuyendoi3" class="chuyendoi" href="#"><img src="image/Synch.png" style="height: 22px;" alt=""></a>
+						<div class="col-lg-6 cus-field2">
+							<select class="form-control cus-select" name="endPoint" value="endPoint" id="endPointSpHn"
+									data-live-search="true">
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="col-lg-8 margin-date">
+							<div class="has-feedback has-feedback-left">
+								<i class="fa fa-calendar fa-2 form-control-feedback" style="color: #0b0b0b;font-size: 25px;margin-top: 5px;" aria-hidden="true"></i>
+								<input type='text' name="date" value="" class="form-control datepicker"/>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group has-feedback has-feedback-left">
+								<button type="submit" class="btn TimChuyen">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="chuyenav" value="R02AaSWQAWl25">
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://anvui.vn/themes/interbusline/js/jquery-1.11.3.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://anvui.vn/themes/interbusline/js/bootstrap.js"></script>
+	<!--  Datepicker 	-->
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="libs/bootstrap-select/js/bootstrap-select.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<!--JS ANVUI-->
+	<script src="js/anvui-new.js"></script>
+
+</body>
+</html>

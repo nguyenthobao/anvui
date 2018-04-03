@@ -1,0 +1,20 @@
+RewriteEngine on 
+Options +FollowSymlinks 
+RewriteBase /
+
+RewriteRule ^news$ index.php?sub=news [L,QSA]
+RewriteRule ^([0-9a-zA-Z\_\-]+)-([0-9]+)\.html$ index.php?sub=newsdetail&id=$2 [L,QSA]
+
+RewriteRule ^admin$ index.php?page=admin [L,QSA]
+RewriteRule ^admin/([0-9a-zA-Z\_\-]+)$ index.php?page=admin&sub=$1 [L,QSA]
+
+RewriteRule ^chinh-sach-bao-mat$ index.php?sub=csbm [L,QSA]
+RewriteRule ^chinh-sach-hoat-dong$ index.php?sub=cshd [L,QSA]
+RewriteRule ^dieu-khoan-su-dung$ index.php?sub=dksd [L,QSA]
+RewriteRule ^lien-he$ index.php?sub=contact [L,QSA]
+RewriteRule ^tim-ve$ index.php?sub=datve [L,QSA]
+RewriteRule ^gioi-thieu$ index.php?sub=gioithieu [L,QSA]
+RewriteRule ^phan-mem$ index.php?sub=phanmem [L,QSA] 
+RewriteRule ^dat-ve-ssl$ index.php?sub=datvessl [L,QSA] 
+RewriteRule ^order-ssl$ index.php?sub=order [L,QSA] 
+RewriteRule ^([0-9a-zA-Z\_\-]+)$ index.php?sub=$1 [L,QSA]

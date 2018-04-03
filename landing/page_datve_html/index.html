@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AnVui.vn - Đi an về vui</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="quangchauvn@gmail.com">
+    <base id="TCT_URWveRQtw" />
+
+    <link href="libs/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="css/common.css?v=123213" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="plugins/bootstrap-select/css/bootstrap-select.css">
+    <link href="css/sub.css?v=111" rel="stylesheet" type="text/css">
+
+    <script src="libs/jquery/1.12.3/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="libs/bootstrap-datetimepicker/js/moment.js" type="text/javascript"></script>
+    <script src="libs/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <div class="wrapper">
+        <div class="">
+            <header id="header">
+                <div class="container">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 logoav">
+                        <a href="/"><img src="imgs/logo.png"></a>
+                    </div>
+                    <div class="box-search col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="box-search-body">
+                            <form id="fly-search" action="" method="get">
+                                <div class="row fly-search-inner">
+                                    <div class="fly-search-item col-md-3 col-sm-6 col-xs-12">
+                                        <select class="selectpicker" value="chuyenav" id="chuyenav" data-live-search="true">
+                                        </select>
+                                    </div>
+                                    <div class="fly-search-item col-md-3 col-sm-6 col-xs-12">
+                                        <select class="selectpicker" value="startPoint" id="startPoint" data-live-search="true">
+                                        </select>
+                                    </div>
+
+                                    <div class="fly-search-item col-md-3 col-sm-6 col-xs-12">
+                                        <select class="selectpicker" value="endPoint" id="endPoint" data-live-search="true">
+                                        </select>
+                                    </div>
+                                    <div class="fly-search-item date col-md-3 col-sm-6 col-xs-12">
+                                        <div class="icon" aria-label="Calendar icon" data-proxy-click="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17.5" fill="currentColor">
+                                                <rect y="6.5" width="16" height="1"></rect>
+                                                <rect x="11" y="-0.5" width="1" height="5"></rect>
+                                                <rect x="4" y="-0.5" width="1" height="5"></rect>
+                                                <path d="M14,2.47a1,1,0,0,1,1,1v12a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1V3.5a1,1,0,0,1,1-1H14m0-1H2a2,2,0,0,0-2,2v12a2,2,0,0,0,2,2H14a2,2,0,0,0,2-2V3.5a2,2,0,0,0-2-2h0Z"></path>
+                                            </svg>
+                                        </div>
+                                        <input type='text' name="date" value="" class="form-control" id='datetimepicker' />
+                                    </div>
+                                    <div class="fly-search-item">
+                                        <label> &nbsp;</label>
+                                        <button type="button" id="TimChuyen" class="BNC-search-product btn btn-danger">Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            <div class="content home-box">
+                <div class="container">
+                    <div class="listchuyen row">
+                    </div>
+                    <center>
+                        <h2 id="beginmes">Hãy chọn Chuyến, Điểm đi, Điểm đến và thời gian!</h2></center>
+                    <center>
+                        <h2 id="emptymes" style="display:none">Không có tuyến nào, hãy chọn lại!</h2></center>
+
+                    <div class="f-center-body" id="chonghe" style="display:none">
+                        <div class="f-center-title"> <i></i><span>Chọn ghế</span></div>
+
+                        <div class="chuthich row">
+
+                            <i style="color:red; display:none" class="treemmes">* Trẻ em vẫn được tính chỗ và giá vé bằng <span id="childrenTicketRatio"></span> vé người lớn. </i>
+
+                            <br />
+                            <span class="chuthich_dachon">Ghế đã đặt</span>
+                            <span class="chuthich_chuachon">Ghế chưa đặt</span>
+                            <span class="chuthich_banchon">Ghế bạn vừa chọn</span>
+                        </div>
+                        <div class="box-chonghe row">
+                            <center>Loading...</center>
+                        </div>
+                    </div>
+
+                    <div class="f-center-body" id="thongtin" style="display:none">
+
+                        <div class="panel panel-default packagesFilter" style="width: 100%; float:left">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Thông tin khách hàng</h3>
+                            </div>
+                            <div class="panel-body transaction" style="padding: 10px;">
+
+                                <div class="box-thongtin row">
+
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Ghế đã chọn:</label>
+                                        <div class="col-sm-9" id="ghedachonspan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Tên của bạn</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="fullName" class="form-control" placeholder="Tên của bạn">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Số điện thoại</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" id="phoneNumber" class="form-control no-spinners" placeholder="Số điện thoại">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Số người lớn</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" style="width: 93px;" id="numberMan" class="form-control" value="" disabled>
+                                        </div>
+
+                                        <label for="inputEmail3" class="col-sm-1 control-label"></label>
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Số trẻ em</label>
+                                        <div class="col-sm-2">
+                                            <input type="number" style="width: 93px;" id="numberBayby" onchange="checknumbaby(this.value)" class="form-control" value="0" min="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default packagesFilter" style="width: 100%; float:left;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Hình thức giao dịch</h3>
+                            </div>
+                            <div class="panel-body transaction" style="padding: 10px;">
+                                <div class="radio">
+                                    Số tiền cần thanh toán: <span id="priceneedpay"></span> VNĐ
+                                    <br />
+
+                                    <i style="color:red; display:none" class="treemmes">* Trẻ em vẫn được tính chỗ và giá vé bằng <span id="childrenTicketRatio"></span>% vé người lớn. </i>
+
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="paymenttype" value="1"> Thanh toán đảm bảo trực tuyến - Thẻ nội địa
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <img class="img-responsive" src="http://demo.nhaxe.vn/themes/1/statics/imgs/ATMnoidia_logongang.png" style="width:100%">
+                                    </div>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="paymenttype" value="5" checked> Thanh toán tại quầy
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="panel panel-default packagesFilter" id="datthanhcong" style="width: 95%; display:none">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Hoàn tất đặt vé</h3>
+                            </div>
+                            <div class="panel-body transaction" style="padding: 10px; text-align:center">
+
+                                <h4>Bạn đã hoàn tất đặt vé, chúng tôi sẽ liên hệ với bạn để hoàn thành quá trình đặt vé. Chân thành cảm ơn!</h4>
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <center>
+                            <button type="button" id="hoanthanhbtn" onclick="hoanthanh()" class="btn btn-danger">Xác nhận đặt vé</button>
+                        </center>
+
+                        <span id="loadingbtn" style="display: none;    text-align: center;
+    font-size: 20px; width: 100%; float: left">Đang đặt vé ...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skyline hidden-xs hidden-sm">
+                <div class="skyline-city"></div>
+                <div class="bus-img">
+                    <img style="opacity: 0.3;filter: alpha(opacity=30);" src="imgs/banh-xe.gif">
+                </div>
+            </div>
+            <footer class="">
+                <div class="container">
+                    <div class="menubotton col-lg-12 col-sm-12 col-xs-12">
+                    </div>
+                    <hr>
+                    <div class="col-lg-8 col-sm-8 col-xs-12 doitac">
+                        <h3>Đối tác</h3>
+                        <div class="col col-md-4 col-sm-4 col-xs-6">
+                            <img src="http://cdn.dobody.vn/wp-content/uploads/2016/10/logo-dobody-3.png" class="img-responsive">
+                        </div>
+                        <div class="col col-md-2 col-sm-2 col-xs-3">
+                            <img src="http://onepay.com.vn/home/templates/onepay/images/logo.png" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-12 applist">
+                        <h3>Tải ứng dụng</h3>
+                        <a href=""><img src="imgs/GooglePlay.png" /></a>
+                        <a href=""><img src="imgs/ios.png" /></a>
+                    </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-12 info">
+                        <h3>Về chúng tôi</h3>
+                        <p>Tên công ty: CÔNG TY CÔNG NGHỆ ANVUI.</p>
+                        <p>Địa chỉ: Tầng 4 Toà Nhà Times Tower Số 35 Lê Văn Lương , Thanh Xuân, Hà Nội, Việt Nam</p>
+                        <p><span style="background-color:rgb(26, 26, 26); color:rgb(172, 172, 175); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:14px">Giấy chứng nhận ĐKKD số 0107840883 do Sở KH&amp; ĐT TP. Hà Nội cấp lần đầu ngày 12/05/2017</span></p>
+                        <p><span style="background-color:rgb(26, 26, 26); font-size:14px">Website: http://anvui.vn - http://vehanhkhach.com Hotline: 0936889944</span></p>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-12" style="padding-top:10px">
+                        <div class="col col-md-12 col-sm-12 col-xs-12">
+                            <img src="imgs/verified-visa-master.png" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    </div>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <script src="js/anvui.js?v=11" type="text/javascript"></script>
+</body>
+
+</html>

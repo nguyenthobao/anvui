@@ -1,0 +1,77 @@
+<!--{temp admin_head}-->
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Danh sách tin tức</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr> 
+                            <th width="20px">#</th> 
+                            <th width="100px">Hình ảnh</th> 
+                            <th width="210px">Tiêu đề</th>  
+                            <th width="100px">Thao tác</th> 
+                        </tr> 
+                    </thead> 
+                    <style type="text/css">
+                        .img_list{
+                            max-height:100px;
+                            overflow: hidden;
+                        }
+                    </style>
+                    <tbody> 
+                        {loop $data['news'] $k $v}
+                        <tr> 
+                            <!--{eval $kk = $data['start'] + $k+1}-->
+                            <th scope="row">$kk</th> 
+                            <td>
+                                <div class="img_list">
+                                    <a href="{$v['link']}" target="_blank">
+                                        <img width="100px" src="http://anvui.vn/cdn/{$v['img']}"/>
+                                    </a>
+                                </div>
+                            </td> 
+                            <td>
+                                <a href="{$v['link']}" target="_blank">
+                                    <b>$v['title']</b> 
+                                </a> 
+                            </td>   
+                            <td> 
+                                <a href="http://anvui.vn/admin/addnews?id={$v['id']}" class="" data-id="{$v['id']}">Sửa</a> / 
+                                <a href="javascript:;" class="del_news" data-id="{$v['id']}">Xoá</a>
+                            </td> 
+                        </tr> 
+                        {/loop}
+                    </tbody>
+                </table>
+                <center>
+                    <div class="btn-group" role="group" aria-label="First group">
+                        {loop $data['pages'] $k $v}
+                            <a href="http://anvui.vn/admin/news?p={$v}" class="btn btn-default{if isset($data['page']) && $data['page'] == $v } active{/if}"> 
+                                $v
+                            </a> 
+                        {/loop}
+                    </div>
+                </center>
+                <br />
+                <br />
+
+                <script type="text/javascript">
+                    $('.del_news').click(function(){
+                        var id = $(this).attr('data-id'); 
+                        if (confirm('Bạn chắc chắn muốn xoá tin tức này?')) { 
+                            location.href= 'http://anvui.vn/admin/newsdel?id='+id;
+                        }
+                    });
+                </script>
+            </div>
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+<!--{temp admin_footer}-->

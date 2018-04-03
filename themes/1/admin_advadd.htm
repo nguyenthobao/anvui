@@ -1,0 +1,125 @@
+<!--{temp admin_head}-->
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Quảng cáo</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Thêm quảng cáo
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="add_adv" role="form" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>Tên Banner</label>
+                                            <input class="form-control" id="name" name="name"> 
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Link đích</label>
+                                            <input class="form-control" id="link" name="link"> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Hình Banner</label>
+                                            <input type="file" id="img" name="img">
+                                             {if isset($data['adv']['id'])}
+                                             <img src="http://tin12.com/cdn/{$data['adv']['img']}" width="200px" />
+                                             {/if}
+                                        </div> 
+                                        <div class="form-group">
+                                            <label>Vị trí</label>
+                                            {loop $data['pos'] $k $v}
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="adv_pos[]" {if isset($data['adv']['pos']) && in_array($v['id'],$data['adv']['pos'])}checked{/if} value="{$v['id']}">$v['name']
+                                                </label> 
+                                            </div>
+                                            {/loop} 
+                                        </div>
+                                        <div class="form-group hide">
+                                            <label>Thứ tự</label>
+                                            <select class="form-control" name="sort">
+                                                {loop $data['sort'] $k $v}
+                                                <option value="$v" {if isset($data['adv']['sort']) && $v == $data['adv']['sort']}checked{/if}>$v</option> 
+                                                {/loop}
+                                            </select>
+                                        </div>
+                                        {if isset($data['adv']['id'])}
+                                        <div class="form-group">
+                                            <label>Hiển thị trên</label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="in_pc" value="1" {if $data['adv']['in_pc'] == 1}checked{/if}> PC
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="in_mobile" value="1" {if $data['adv']['in_mobile'] == 1}checked{/if}> Mobile
+                                            </label> 
+                                        </div>
+                                        {else}
+                                        <div class="form-group">
+                                            <label>Hiển thị trên</label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked> PC
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked> Mobile
+                                            </label> 
+                                        </div>
+                                        {/if}
+                                       {if isset($data['adv']['id'])}
+                                        <input type="hidden" name="img_old" value="$data['adv']['img']">
+                                        <input type="hidden" name="id" value="$data['adv']['id']">
+                                        <input type="hidden" name="act" value="edit">
+                                        <script type="text/javascript">
+                                            $('#name').val('$data['adv']['name']');
+                                            $('#link').val('$data['adv']['link']');
+                                        </script>
+                                        <button type="submit" class="btn btn-default">Sửa</button>
+                                        {else}
+                                        <input type="hidden" name="act" value="add">
+                                        <button type="submit" class="btn btn-default">Thêm mới</button>
+                                        {/if}
+                                        
+                                    </form>
+                                    <script type="text/javascript">
+                                        $( "#add_adv" ).submit(function() {
+                                            var name = $('#name').val();
+                                            var link = $('#link').val();
+                                            var img = $('#img').val();
+                                            if(name ==''){
+                                                alert('Hãy điền tên');
+                                                return false;
+                                            }
+                                            if(link ==''){
+                                                alert('Hãy điền link');
+                                                return false;
+                                            }
+                                            {if !$data['adv']['id']}
+                                            if(img ==''){
+                                                alert('Hãy chọn banner');
+                                                return false;
+                                            }
+                                            {/if}
+                                        });
+                                    </script>
+                                </div> 
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+<!--{temp admin_footer}-->

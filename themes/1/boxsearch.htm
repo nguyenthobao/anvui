@@ -1,0 +1,52 @@
+
+                        <div class="box-search-body">
+                            <form id="fly-search" action="/tim-ve" method="get">
+                                <input type="hidden" name="startPointId" id="startPointId" value="{$data['startPointId']}">
+                                <input type="hidden" name="endPointId" id="endPointId" value="{$data['endPointId']}">
+                                <div class="row fly-search-inner">
+                                    <div class="fly-search-item col-md-3 col-sm-6 col-xs-12">
+                                        <input type="text" id="startPoint" name="startPoint" value="{$data['startPoint']}" placeholder="Nơi đi" class="startPoint form-control form-filter">
+                                        <div tabindex="0" class="icon-change"></div>
+                                    </div>
+                                    <div class="fly-search-item col-md-3 col-sm-6 col-xs-12">
+                                        <input type="text" id="endPoint" name="endPoint" value="{$data['endPoint']}" placeholder="Nơi đến" class="endPoint form-control form-filter">
+                                    </div>
+                                    <div class="fly-search-item date col-md-3 col-sm-6 col-xs-12">
+                                        <div class="icon" aria-label="Calendar icon" data-proxy-click="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17.5" fill="currentColor">
+                                                <rect y="6.5" width="16" height="1"></rect>
+                                                <rect x="11" y="-0.5" width="1" height="5"></rect>
+                                                <rect x="4" y="-0.5" width="1" height="5"></rect>
+                                                <path d="M14,2.47a1,1,0,0,1,1,1v12a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1V3.5a1,1,0,0,1,1-1H14m0-1H2a2,2,0,0,0-2,2v12a2,2,0,0,0,2,2H14a2,2,0,0,0,2-2V3.5a2,2,0,0,0-2-2h0Z"></path>
+                                            </svg>
+                                        </div>
+                                        <input type='text' name="date" value="{$data['date']}" class="form-control" id='datetimepicker' />
+                                    </div>
+                                    <div class="fly-search-item">
+                                        <label> &nbsp;</label>
+                                        <button class="BNC-search-product btn btn-danger">Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                       <script type="text/javascript">
+ $(document).ready(function() {
+ 
+
+ 
+                        $('.icon-change').click(function(){
+                            var startPointId = $('#startPointId').val();
+                            var endPointId = $('#endPointId').val();
+                            var startPoint = $('#startPoint').val();
+                            var endPoint = $('#endPoint').val();
+
+                            $('#startPointId').val(endPointId);
+                            $('#endPointId').val(startPointId);
+                            $('#startPoint').val(endPoint);
+                            $('#endPoint').val(startPoint);
+
+                        }); 
+
+
+});
+</script>

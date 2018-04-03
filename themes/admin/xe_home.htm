@@ -1,0 +1,118 @@
+<!--{temp head}-->
+                        <div class="home-box-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                            <div class="home-box-right-title">
+                                <h1>Khai báo phương tiện</h1>
+                            </div>
+                            <div class="home-box-right-body">
+                                <div class="filter">
+                                    <div class="filter-title">
+                                        <h2>Tìm phương tiện</h2>
+                                    </div>
+                                    <div class="filter-body">
+                                        <form id="car-search" action="" method="get">
+                                            <div class="row">
+                                                 
+                                                <div class="col-md-3 col-sm-6 col-xs-12"> 
+                                                    <input type="text" value="" name="numberPlate" placeholder="Biển số" class="form-control form-filter">
+                                                </div>
+                                                <div class="col-md-3 col-sm-6 col-xs-12"> 
+                                                    <select class="form-control" name="seatMapId" id="seatMapId">
+
+                                      <option>
+                                        Loại xe
+                                    </option>
+                                    {loop $data['map'] $k $v}
+                                      <option value="{$v['seatMapId']}">
+                                        <!--{eval echo count($v['seatList']) }--> ghế
+                                      </option> 
+                                    {/loop}
+                                    </select>
+                                                </div>
+                                                <div class="col-md-2 col-sm-6 col-xs-12"> 
+                                                    <input type="text" value="" name="vehicleName" placeholder="Số chỗ" class="form-control form-filter">
+                                                </div>
+                                                <div class="col-md-2 col-sm-6 col-xs-12"> 
+                                                    <button class="btn-danger">Tìm kiếm</button> 
+                                                </div>
+                                                <div class="col-md-2 col-sm-6 col-xs-12">  
+                                                    <a href="/themxe"><button type="button" class="btn btn-info">Thêm xe</button></a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="list-car"> 
+                                    <div class="list-car-body">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Biển số</th>
+                                                    <th>Loại xe</th>
+                                                    <th>Số chỗ</th> 
+                                                    <th>Loại xe</th> 
+                                                    <th>Tùy chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {loop $data['xe'] $k $v}
+                                                <tr>
+                                                    <td>$v['numberPlate']</td>
+                                                    <td>$v['vehicleName']</td>
+                                                    <td>$v['numberOfSeats']</td>  
+                                                    <td>$data['type'][$v['vehicleTypeId']]['vehicleTypeName']</td>  
+                                                    <td>
+                                                        <a href="/suaxe?id={$v['vehicleId']}">Sửa</a>
+                                                        
+                                                    </td>
+                                                </tr>
+                                                 {/loop}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="">
+                <div class="container">
+                    <div class="menubotton col-lg-5 col-sm-5 col-xs-12">
+                        <ul>
+                            <li>
+                                <a href="">Điều khoản dịch vụ</a>
+                            </li>
+                            <li>
+                                <a href="">Chính sách riêng tư</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="coppyright col-lg-2 col-sm-2 col-xs-12">
+                        <span>© Anvui 2017</span>
+                    </div>
+                    <div class="version col-lg-5 col-sm-5 col-xs-12">
+                        <span>v0.16.9</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!--#header-->
+    </div>
+    </div>
+   <script src="themes/admin/js/functions.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#datetimepicker').datetimepicker({
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!--{temp admin_head}-->
+
+        <div id="page-wrapper">
+            <div class="row">
+                <hr>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default"> 
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="add_adv" role="form" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>Tiêu đề</label>
+                                            <input class="form-control" id="title" value="$data['news']['title']" name="title" disabled> 
+                                        </div>
+                                          
+                                         {if $data['news']['id'] != 6 
+                                         && $data['news']['id'] != 9 
+                                         && $data['news']['id'] != 7 
+                                         && $data['news']['id'] != 10 
+                                         && $data['news']['id']!=8}
+                                         <div class="form-group">
+                                            <label>Thẻ meta description</label>
+                                            <textarea class="form-control" id="desc" name="desc" rows="3">{if isset($data['news']['id'])}$data['news']['desc']{/if}</textarea>
+                                        </div>
+                                        {/if}
+                                         
+                                        
+                                        {if $data['news']['id'] == 9 || $data['news']['id'] == 10}
+                                        <div class="form-group">
+                                            <label>Banner</label>
+                                            <input type="file" id="img" name="img">
+                                             {if isset($data['news']['id'])}
+                                             <img style="max-width: 800px" src="http://anvui.vn/cdn/{$data['news']['avatar']}"   />
+                                             {/if}
+</div>
+                                             {if $data['news']['id']==10}
+
+                                             <div class="form-group">
+                                            <label>Link</label>
+                                            <input class="form-control" id="link" value="$data['news']['link']" name="link"> 
+                                        </div>
+                                             {/if}
+
+                                        {elseif $data['news']['id'] != 8}
+                                         <div class="form-group">
+                                            <label>Nội dung</label>
+                                            <textarea class="form-control ckeditor" id="content" name="content" rows="3">{if isset($data['news']['id'])}$data['news']['content']{/if}</textarea>
+                                        </div>
+                                        {else}
+                                        <div class="form-group">
+                                            <label>Link</label>
+                                            <input class="form-control" id="link" value="$data['news']['link']" name="link"> 
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Hình quảng cáo</label>
+                                            <input type="file" id="img" name="img">
+                                             {if isset($data['news']['id'])}
+                                             <img src="http://anvui.vn/cdn/{$data['news']['avatar']}"   />
+                                             {/if}
+                                        </div>  
+                                        {/if}
+
+
+ 
+                                        <input type="hidden" name="img_old" value="$data['news']['avatar']">
+                                        <input type="hidden" name="id" value="$data['news']['id']">
+                                        <input type="hidden" name="act" value="edit"> 
+                                        <button type="submit" class="btn btn-default">Sửa</button>
+                                        
+                                      
+                                    </form>  
+                                </div> 
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+<script type="text/javascript" src="http://anvui.vn/themes/1/admin/global/plugins/ckeditor/ckeditor.js"></script>
+
+<!--{temp admin_footer}-->
