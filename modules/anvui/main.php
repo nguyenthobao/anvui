@@ -420,7 +420,7 @@ class Anvui extends iBNC{
 		$date = explode('-', $date);
 		$datetimestamp = (mktime(0,0,0,(int)$date[1],(int)$date[0],(int)$date[2])  + 60*60*24 )* 1000;
  
-		$url = 'https://dobody-anvui.appspot.com/web/find-schedule?page=0&count=10&startPointId='.$startPointId.'&endPointId='.$endPointId.'&date='.$datetimestamp.'&routeId='.$routeId;
+		$url = 'https://dobody-anvui.appspot.com/web/find-schedule?page=0&count=10&timeZone=7&startPointId='.$startPointId.'&endPointId='.$endPointId.'&date='.$datetimestamp.'&routeId='.$routeId;
 		 
 		$rt= $this->GetAnvui($url);
 		$data  = $rt['results']['result'];
@@ -435,6 +435,33 @@ class Anvui extends iBNC{
 		echo json_encode($data); 
 		die; 
 	}
+
+    function listSchedule2(){
+        $date = $_POST['date'];
+
+        if(empty($date)){
+            $date = date('d/m/Y');
+        }
+        $date = explode('-', $date);
+        $_POST['date'] = (mktime(0,0,0,(int)$date[1],(int)$date[0],(int)$date[2]))* 1000;
+
+        $url = 'https://dobody-anvui.appspot.com/schedule/find-schedule-for-user';
+
+        $rt= $this->PostAnvui($url, $_POST, '', true);
+
+        $data  = $rt['results']['result'];
+
+        foreach ($data as $keysch => &$valuesch) {
+            $valuesch['startTime'] = date('H:i d/m/Y',$valuesch['startTime']/1000);
+            $valuesch['link'] = 'http://'.$web['home'].'/dat-ve?tripId='.$valuesch['tripId'];
+            $valuesch['ticketPrice1'] = number_format($valuesch['ticketPrice']);
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        die;
+    }
+
 	function pointNX(){
 		$routeId = $this->r->get_string('routeId');
 
@@ -526,22 +553,31 @@ class Anvui extends iBNC{
         return $response;
     }
 
-     public function PostAnvui($url,$data,$token){
+     public function PostAnvui($url,$data,$token,$isJson){
      	$data['timeZone'] = 7;
         if(empty($token)){
             $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2IjowLCJkIjp7InVpZCI6IkFETTExMDk3Nzg4NTI0MTQ2MjIiLCJmdWxsTmFtZSI6IkFkbWluIHdlYiIsImF2YXRhciI6Imh0dHBzOi8vc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9kb2JvZHktZ29ub3cuYXBwc3BvdC5jb20vZGVmYXVsdC9pbWdwc2hfZnVsbHNpemUucG5nIn0sImlhdCI6MTQ5MjQ5MjA3NX0.PLipjLQLBZ-vfIWOFw1QAcGLPAXxAjpy4pRTPUozBpw';
         }
-        $request_header = [
-            'Content-Type:application/x-www-form-urlencoded',
-            sprintf('DOBODY6969: %s', $token)
-        ];
+        if($isJson) {
+            $request_header = [
+                'Content-Type:application/json',
+                sprintf('DOBODY6969: %s', $token)
+            ];
+            $data = json_encode($data);
+        } else {
+            $request_header = [
+                'Content-Type:application/x-www-form-urlencoded',
+                sprintf('DOBODY6969: %s', $token)
+            ];
+            $data = http_build_query($data);
+        }
 
         $ch = curl_init();
 
      
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $request_header);
  
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
