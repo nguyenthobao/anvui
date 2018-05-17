@@ -154,6 +154,9 @@ position: absolute;
     overflow: hidden;
     background: #f1f1f1;
 }
+    #jarallax-container-0 {
+        height: -webkit-fill-available;
+    }
 </style>
             <!--<div class="thongke hide">-->
                 <!--<div class="container">-->
@@ -236,7 +239,11 @@ position: absolute;
 
     {if $data['date']}
         $( "#datetimepicker" ).val('{$data['date']}');
-    {/if} 
+    {/if}
+
+        jarallax(document.querySelectorAll('.jarallax'), {
+            automaticResize: true,
+        });
 });
 </script>
 </body>
