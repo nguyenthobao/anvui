@@ -420,7 +420,7 @@ class Anvui extends iBNC{
 		$date = explode('-', $date);
 		$datetimestamp = (mktime(0,0,0,(int)$date[1],(int)$date[0],(int)$date[2])  + 60*60*24 )* 1000;
  
-		$url = 'https://dobody-anvui.appspot.com/web/find-schedule?page=0&count=10&timeZone=7&startPointId='.$startPointId.'&endPointId='.$endPointId.'&date='.$datetimestamp.'&routeId='.$routeId;
+		$url = 'https://dobody-anvui.appspot.com/web/find-schedule?page=0&count=100&timeZone=7&startPointId='.$startPointId.'&endPointId='.$endPointId.'&date='.$datetimestamp.'&routeId='.$routeId;
 		 
 		$rt= $this->GetAnvui($url);
 		$data  = $rt['results']['result'];
