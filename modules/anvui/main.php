@@ -260,10 +260,19 @@ class Anvui extends iBNC{
  			$value['info'] = $info;
  			// $value['desc'] = 'Sàn quản lý vận tải ANVUI là đơn vị xây dựng giải pháp Công nghệ thông tin quản lý tổng thể cho doanh nghiệp vận tải với sứ mệnh: “Đưa công nghệ Hỗ trợ nhà vận tải nâng cao năng lực cạnh tranh để mỗi chuyến đi đều An Vui!”. Lần đầu tiên có mặt tại Việt Nam sàn vận tải ANVUI đang có rất nhiều các chính sách hỗ trợ và trợ giúp các nhà xe như: Tặng website chuyên nghiệp cho nhà xe, Tặng phần mềm quản lý bán vé, Hỗ trợ bán vé cho nhà xe…';
  			$value['desc'] = $info['meta_description'];
- 			if( empty($value['s_name']) ) $value['w_name'] = 'Nhà xe: '.$value['s_name'];
+ 			if(! empty($info['business']) ) {
+                $value['w_name'] = $info['business'];
+            } else {
+                $value['w_name'] = 'Nhà xe '.$value['s_name'];
+            }
  			// $logo = $templateM->where('idw',$value['idw'])
  										// ->getOne();
  			// $value['avatar'] = $_B['cdn'].$logo['img'];
+            if(!is_null($value['domain'])) {
+                $value['domain'] = str_replace(',', '', $value['domain']);
+            } else {
+                $value['domain'] = $value['s_name'].'.nhaxe.vn';
+            }
  		}
 
  		
